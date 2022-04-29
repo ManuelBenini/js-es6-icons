@@ -1,115 +1,119 @@
+const indiceEsadecimali = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+const numeriRandom = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const arrayColoreEsadecimale = [];
+const stringaEsadecimale = creaEsadecimale();
 const fontIcons = [
 	{
 		name: 'cat',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'crow',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'dog',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'dove',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'dragon',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'horse',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'hippo',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'fish',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: 'orange'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'carrot',
 		prefix: 'fa-',
 		type: 'vegetable',
 		family: 'fas',
-		color: 'green'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'apple-alt',
 		prefix: 'fa-',
 		type: 'vegetable',
 		family: 'fas',
-		color: 'green'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'lemon',
 		prefix: 'fa-',
 		type: 'vegetable',
 		family: 'fas',
-		color: 'green'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'pepper-hot',
 		prefix: 'fa-',
 		type: 'vegetable',
 		family: 'fas',
-		color: 'green'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'user-astronaut',
 		prefix: 'fa-',
 		type: 'user',
 		family: 'fas',
-		color: 'blue'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'user-graduate',
 		prefix: 'fa-',
 		type: 'user',
 		family: 'fas',
-		color: 'blue'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'user-ninja',
 		prefix: 'fa-',
 		type: 'user',
 		family: 'fas',
-		color: 'blue'
+		color: stringaEsadecimale
 	},
 	{
 		name: 'user-secret',
 		prefix: 'fa-',
 		type: 'user',
 		family: 'fas',
-		color: 'blue'
+		color: stringaEsadecimale
 	}
 ];
 
@@ -158,7 +162,7 @@ function outputStamp(array) {
     `
       <div class="col mb-5">
         <div>
-          <i class="${family} ${prefix}${name} ${type}"></i>
+          <i class="${family} ${prefix}${name} ${type}" style="color: #${color};"></i>
           <span id="name">${name}</span>
         </div>
       </div>
@@ -166,3 +170,16 @@ function outputStamp(array) {
   });
   
 }
+
+
+function creaEsadecimale() {
+  for(let i = 0; i < 6; i++){
+    arrayColoreEsadecimale.push(indiceEsadecimali[numeriRandom(0, indiceEsadecimali.length - 1)]);
+  }
+  return arrayColoreEsadecimale.join('');
+}
+
+console.log(indiceEsadecimali.length);
+
+console.log('colore esadecimale', arrayColoreEsadecimale);
+console.log('stringa esadecimale =', stringaEsadecimale);
