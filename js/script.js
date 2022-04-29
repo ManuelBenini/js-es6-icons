@@ -1,68 +1,68 @@
 const indiceEsadecimali = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
 const numeriRandom = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-const arrayAnimalsColor = [];
+const arrayanimalsColor = [];
 const arrayVegetablesColor = [];
 const arrayUsersColor = [];
-const animalsColor = creaEsadecimale(arrayAnimalsColor);
+const animalsColorString = creaEsadecimale(arrayanimalsColor);
 const vegetablesColor = creaEsadecimale(arrayVegetablesColor);
 const usersColor = creaEsadecimale(arrayUsersColor);
 
-const fontIcons = [
+const arrayAllElements = [
 	{
 		name: 'cat',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'crow',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'dog',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'dove',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'dragon',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'horse',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'hippo',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'fish',
 		prefix: 'fa-',
 		type: 'animal',
 		family: 'fas',
-		color: animalsColor
+		color: animalsColorString
 	},
 	{
 		name: 'carrot',
@@ -122,18 +122,21 @@ const fontIcons = [
 	}
 ];
 
-const arrayAnimals = fontIcons.filter(element => (element.type == 'animal'))
-const arrayVegetables = fontIcons.filter(element => (element.type == 'vegetable'))
-const arrayUsers = fontIcons.filter(element => (element.type == 'user'))
+const arrayTypes = []; typePush();
+const arrayAnimals = arrayAllElements.filter(element => (element.type == 'animal'))
+const arrayVegetables = arrayAllElements.filter(element => (element.type == 'vegetable'))
+const arrayUsers = arrayAllElements.filter(element => (element.type == 'user'))
 
-console.log('Tutti i tipi', fontIcons);
+
+console.log('Tutti i tipi', arrayAllElements);
+console.log('tipologie', arrayTypes);
 console.log('Animali', arrayAnimals);
 console.log('Vegetali', arrayVegetables);
 console.log('Utenti', arrayUsers);
 
 //stampa di default che si vede all'apertura della pagina
-imageStamp(fontIcons);
-selectStamp();
+imageStamp(arrayAllElements);
+optionsStamp();
 
 //bottone
   const selectBtn = document.getElementById('type-choice');
@@ -154,7 +157,7 @@ selectStamp();
       break;
     
       default:
-      arrayScelto = fontIcons;
+      arrayScelto = arrayAllElements;
       break;
     }
       
@@ -182,6 +185,13 @@ selectStamp();
 
 optionAdder();
 
+function typePush() {
+	for(let i = 0; i < arrayAllElements.length; i++){
+		if(!arrayTypes.includes(arrayAllElements[i].type)){
+			arrayTypes.push(arrayAllElements[i].type)
+		}
+	}
+}
 
 function imageStamp(array) {
   const row = document.querySelector('.row');
@@ -204,33 +214,26 @@ function imageStamp(array) {
   
 }
 
-function selectStamp() {
+function optionsStamp() {
   const typeChoice = document.getElementById('type-choice');
   typeChoice.innerHTML = '';
 
   typeChoice.innerHTML = 
   `
     <option value="all" id="all" selected>All</option>
-    <option value="animal" id="animal">animal</option>
-    <option value="vegetable" id="vegetable">vegetable</option>
-    <option value="user" id="user">user</option>
   `;
 }
 
 function optionAdder() {
 
-  fontIcons.forEach(element => {
-
-    if(element.type != 'animal' && element.type != 'vegetable' && element.type != 'user'){
-    selectBtn.innerHTML += 
-    `
-    <option value="${element.type}" id="${element.type}">${element.type}</option>
-    `  
-    }
+	arrayTypes.forEach(element => {
+		selectBtn.innerHTML += 
+	`
+	<option value="${element}" id="${element}">${element}</option>
+	`  
+	});
     
-  });
 }
-
 
 function creaEsadecimale(array) {
   for(let i = 0; i < 6; i++){
@@ -239,6 +242,6 @@ function creaEsadecimale(array) {
   return array.join('');
 }
 
-console.log('colore esadecimale animali', animalsColor);
+console.log('colore esadecimale animali', animalsColorString);
 console.log('colore esadecimale vegetali', vegetablesColor);
 console.log('colore esadecimale utenti', usersColor);
