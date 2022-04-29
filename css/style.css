@@ -1,0 +1,46 @@
+#title{
+  height: 45px;
+  color: #29b1dd;
+}
+
+.mb_container{
+  height: 50px;
+  color: white;
+}
+
+.mb_bg{
+  background-color: #29b1dd
+}
+
+main{
+  height: calc(100vh - 95px);
+}
+
+.col div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  height: 70px;
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px black;
+  background-color: red;
+}
+
+.animal{
+ color: orange;
+}
+
+.vegetables{
+  color: green;
+}
+
+.user{
+  color: blue;
+}
+
+.fas{
+  font-size: 30px;
+}
