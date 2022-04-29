@@ -187,8 +187,8 @@ optionAdder();
 
 function typePush() {
 	for(let i = 0; i < arrayAllElements.length; i++){
-		if(!arrayTypes.includes(arrayAllElements[i].type)){
-			arrayTypes.push(arrayAllElements[i].type)
+		if(!arrayTypes.includes(arrayAllElements[i].type.toLowerCase())){
+			arrayTypes.push(arrayAllElements[i].type.toLowerCase())
 		}
 	}
 }
