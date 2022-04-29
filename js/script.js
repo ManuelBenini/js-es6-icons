@@ -122,44 +122,49 @@ const fontIcons = [
 	}
 ];
 
-const animals = fontIcons.filter(element => (element.type == 'animal'))
-const vegetables = fontIcons.filter(element => (element.type == 'vegetable'))
-const users = fontIcons.filter(element => (element.type == 'user'))
+const arrayAnimals = fontIcons.filter(element => (element.type == 'animal'))
+const arrayVegetables = fontIcons.filter(element => (element.type == 'vegetable'))
+const arrayUsers = fontIcons.filter(element => (element.type == 'user'))
 
 console.log('Tutti i tipi', fontIcons);
-console.log('Animali', animals);
-console.log('Vegetali', vegetables);
-console.log('Utenti', users);
+console.log('Animali', arrayAnimals);
+console.log('Vegetali', arrayVegetables);
+console.log('Utenti', arrayUsers);
 
 //stampa di default che si vede all'apertura della pagina
-outputStamp(fontIcons);
+imageStamp(fontIcons);
+selectStamp();
 
 //bottoni
   const allOptionBtn = document.getElementById('all');
   allOptionBtn.addEventListener('click', function(){
-    outputStamp(fontIcons);
+    imageStamp(fontIcons);
   });
 
   const animalOptionBtn = document.getElementById('animal');
   animalOptionBtn.addEventListener('click', function(){
-    outputStamp(animals);
+    imageStamp(arrayAnimals);
   });
 
   const vegetableOptionBtn = document.getElementById('vegetable');
   vegetableOptionBtn.addEventListener('click', function(){
-    outputStamp(vegetables);
+    imageStamp(arrayVegetables);
   });
 
   const userOptionBtn = document.getElementById('user');
   userOptionBtn.addEventListener('click', function(){
-    outputStamp(users);
+    imageStamp(arrayUsers);
   });
 //
 
+optionAdder();
 
-function outputStamp(array) {
+
+function imageStamp(array) {
   const row = document.querySelector('.row');
+  //reset
   row.innerHTML = '';
+  
 
   array.forEach(element => {
     const {name, prefix, type, family, color} = element;
@@ -174,6 +179,34 @@ function outputStamp(array) {
     `
   });
   
+}
+
+function selectStamp() {
+  const typeChoice = document.getElementById('type-choice');
+  typeChoice.innerHTML = '';
+
+  typeChoice.innerHTML = 
+  `
+    <option value="All" id="all" selected>All</option>
+    <option value="Animal" id="animal">animal</option>
+    <option value="Vegetable" id="vegetable">vegetable</option>
+    <option value="User" id="user">user</option>
+  `;
+}
+
+function optionAdder() {
+  const typeChoice = document.getElementById('type-choice');
+  
+  fontIcons.forEach(element => {
+
+    if(element.type != animalOptionBtn.innerHTML && element.type != vegetableOptionBtn.innerHTML && element.type != userOptionBtn.innerHTML){
+    typeChoice.innerHTML += 
+    `
+    <option value="${element.type}" id="${element.type}">${element.type}</option>
+    `  
+    }
+    
+  });
 }
 
 
