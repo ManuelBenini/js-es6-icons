@@ -135,27 +135,50 @@ console.log('Utenti', arrayUsers);
 imageStamp(fontIcons);
 selectStamp();
 
-//bottoni
-  const allOptionBtn = document.getElementById('all');
-  allOptionBtn.addEventListener('click', function(){
-    imageStamp(fontIcons);
-  });
+//bottone
+  const selectBtn = document.getElementById('type-choice');
+  selectBtn.addEventListener('change', function(){
+    let arrayScelto;
+    switch (this.value) {
 
-  const animalOptionBtn = document.getElementById('animal');
-  animalOptionBtn.addEventListener('click', function(){
-    imageStamp(arrayAnimals);
-  });
+      case 'animal': 
+      arrayScelto = arrayAnimals;
+      break;
 
-  const vegetableOptionBtn = document.getElementById('vegetable');
-  vegetableOptionBtn.addEventListener('click', function(){
-    imageStamp(arrayVegetables);
-  });
+      case 'vegetable':
+      arrayScelto = arrayVegetables;
+      break;
 
-  const userOptionBtn = document.getElementById('user');
-  userOptionBtn.addEventListener('click', function(){
-    imageStamp(arrayUsers);
+      case 'user':
+      arrayScelto = arrayUsers;
+      break;
+    
+      default:
+      arrayScelto = fontIcons;
+      break;
+    }
+      
+      imageStamp(arrayScelto);
   });
 //
+
+  /*  Alternativa, 4 bottoni invece di un singolo change con switch
+    const animalOptionBtn = document.getElementById('animal');
+    animalOptionBtn.addEventListener('click', function(){
+      imageStamp(arrayAnimals);
+    });
+
+    const vegetableOptionBtn = document.getElementById('vegetable');
+    vegetableOptionBtn.addEventListener('click', function(){
+      imageStamp(arrayVegetables);
+    });
+
+    const userOptionBtn = document.getElementById('user');
+    userOptionBtn.addEventListener('click', function(){
+      imageStamp(arrayUsers);
+    });
+  */
+
 
 optionAdder();
 
@@ -187,20 +210,19 @@ function selectStamp() {
 
   typeChoice.innerHTML = 
   `
-    <option value="All" id="all" selected>All</option>
-    <option value="Animal" id="animal">animal</option>
-    <option value="Vegetable" id="vegetable">vegetable</option>
-    <option value="User" id="user">user</option>
+    <option value="all" id="all" selected>All</option>
+    <option value="animal" id="animal">animal</option>
+    <option value="vegetable" id="vegetable">vegetable</option>
+    <option value="user" id="user">user</option>
   `;
 }
 
 function optionAdder() {
-  const typeChoice = document.getElementById('type-choice');
-  
+
   fontIcons.forEach(element => {
 
-    if(element.type != animalOptionBtn.innerHTML && element.type != vegetableOptionBtn.innerHTML && element.type != userOptionBtn.innerHTML){
-    typeChoice.innerHTML += 
+    if(element.type != 'animal' && element.type != 'vegetable' && element.type != 'user'){
+    selectBtn.innerHTML += 
     `
     <option value="${element.type}" id="${element.type}">${element.type}</option>
     `  
