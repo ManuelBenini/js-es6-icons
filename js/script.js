@@ -184,7 +184,6 @@ function creaEsadecimale(array) {
   return array.join('');
 }
 
-console.log(indiceEsadecimali.length);
-
-console.log('colore esadecimale', arrayColoreEsadecimale);
-console.log('stringa esadecimale =', stringaEsadecimale);
+console.log('colore esadecimale animali', animalsColor);
+console.log('colore esadecimale vegetali', vegetablesColor);
+console.log('colore esadecimale utenti', usersColor);
