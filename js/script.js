@@ -113,20 +113,44 @@ const fontIcons = [
 	}
 ];
 
-console.log(fontIcons.length);
-
 const animals = fontIcons.filter(element => (element.type == 'animal'))
 const vegetables = fontIcons.filter(element => (element.type == 'vegetable'))
 const users = fontIcons.filter(element => (element.type == 'user'))
 
+console.log('Tutti i tipi', fontIcons);
 console.log('Animali', animals);
 console.log('Vegetali', vegetables);
 console.log('Utenti', users);
 
-outputStamp(fontIcons)
+//stampa di default che si vede all'apertura della pagina
+outputStamp(fontIcons);
+
+//bottoni
+  const allOptionBtn = document.getElementById('all');
+  allOptionBtn.addEventListener('click', function(){
+    outputStamp(fontIcons);
+  });
+
+  const animalOptionBtn = document.getElementById('animal');
+  animalOptionBtn.addEventListener('click', function(){
+    outputStamp(animals);
+  });
+
+  const vegetableOptionBtn = document.getElementById('vegetable');
+  vegetableOptionBtn.addEventListener('click', function(){
+    outputStamp(vegetables);
+  });
+
+  const userOptionBtn = document.getElementById('user');
+  userOptionBtn.addEventListener('click', function(){
+    outputStamp(users);
+  });
+//
+
 
 function outputStamp(array) {
   const row = document.querySelector('.row');
+  row.innerHTML = '';
 
   array.forEach(element => {
     const {name, prefix, type, family, color} = element;
